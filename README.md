@@ -8,6 +8,7 @@ Seguem algumas explicações e justificativas:
 - Existe uma classe MongodbMigration anotada com @Config que faz a criação de database e alguns índices;
 - Utilizado Java 11, Maven, Spring Boot 2.6.7, MongoDb;
 - Tem um swagger configurado. 
+- server.port = 8094
 - A idéia foi manter a camada de domínio completamente desacoplada (inclusive do Spring), com acessos realizados através de portas e adaptadores;
 - Os testes unitários tbm seguiram a idéia de desacoplar, mockando as outras classes;
 - O controle da API ficou somente na wishlist e itens. Não há validações de cliente e produto;
