@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: mongodb
+    networks:
+      - global-default
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+  mongoexpress:
+    image: mongo-express
+    container_name: mongodb_express
+    networks:
+      - global-default
+    ports:
+      - 8084:8084
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: secret
+
+networks:
+  global-default:
+    external: true
